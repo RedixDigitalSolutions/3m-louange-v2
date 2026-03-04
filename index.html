@@ -1,0 +1,1957 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>3M Louange — Menu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ════════════════════════════════════════
+         DESIGN TOKENS — LIGHT MODE
+      ════════════════════════════════════════ */
+      :root {
+        --bg-from: #fdf6e8;
+        --bg-mid: #f5e4b8;
+        --bg-to: #eecf88;
+        --surface: rgba(255, 255, 255, 0.6);
+        --surface-hover: rgba(255, 255, 255, 0.88);
+        --surface-solid: #fffcf5;
+        --surface-border: rgba(212, 175, 55, 0.22);
+        --surface-shadow: 0 8px 32px rgba(90, 50, 10, 0.1);
+        --text-primary: #1a1208;
+        --text-secondary: #7a6040;
+        --text-muted: #a89068;
+        --accent: #d4af37;
+        --accent-light: rgba(212, 175, 55, 0.18);
+        --accent-glow: rgba(212, 175, 55, 0.45);
+        --accent-deep: #b8931e;
+        --price-color: #c0392b;
+        --overlay-bg: #fffcf5;
+        --overlay-header-bg: rgba(255, 252, 245, 0.92);
+        --tab-inactive-bg: rgba(255, 255, 255, 0.52);
+        --item-card: rgba(255, 255, 255, 0.78);
+        --item-border: rgba(212, 175, 55, 0.14);
+        --subsection-line: rgba(212, 175, 55, 0.2);
+        --shimmer-a: rgba(255, 255, 255, 0);
+        --shimmer-b: rgba(255, 255, 255, 0.7);
+        --t-fast: 0.18s ease;
+        --t-med: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        --t-bounce: 0.52s cubic-bezier(0.34, 1.56, 0.64, 1);
+        --t-slide: 0.46s cubic-bezier(0.32, 0.72, 0, 1);
+        --r-sm: 10px;
+        --r-md: 16px;
+        --r-lg: 22px;
+        --r-xl: 30px;
+      }
+
+      /* ════════════════════════════════════════
+         DESIGN TOKENS — DARK MODE
+      ════════════════════════════════════════ */
+      [data-theme="dark"] {
+        --bg-from: #0e0903;
+        --bg-mid: #17100a;
+        --bg-to: #201608;
+        --surface: rgba(35, 24, 10, 0.72);
+        --surface-hover: rgba(52, 36, 14, 0.92);
+        --surface-solid: #17100a;
+        --surface-border: rgba(212, 175, 55, 0.18);
+        --surface-shadow: 0 8px 32px rgba(0, 0, 0, 0.48);
+        --text-primary: #f5edd8;
+        --text-secondary: #c8a868;
+        --text-muted: #8a6c45;
+        --accent-light: rgba(212, 175, 55, 0.12);
+        --overlay-bg: #130d07;
+        --overlay-header-bg: rgba(19, 13, 7, 0.94);
+        --tab-inactive-bg: rgba(35, 24, 10, 0.62);
+        --item-card: rgba(35, 24, 10, 0.82);
+        --item-border: rgba(212, 175, 55, 0.1);
+        --subsection-line: rgba(212, 175, 55, 0.12);
+        --shimmer-a: rgba(255, 255, 255, 0);
+        --shimmer-b: rgba(255, 255, 255, 0.05);
+      }
+
+      /* ════════════════════════════════════════
+         RESET
+      ════════════════════════════════════════ */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      /* ════════════════════════════════════════
+         BODY + LAYERED BACKGROUND
+      ════════════════════════════════════════ */
+      body {
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        background: linear-gradient(
+          155deg,
+          var(--bg-from) 0%,
+          var(--bg-mid) 50%,
+          var(--bg-to) 100%
+        );
+        background-attachment: fixed;
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        transition:
+          background var(--t-med),
+          color var(--t-med);
+      }
+
+      /* Radial glow blobs */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 70% 50% at 12% 8%,
+            rgba(212, 175, 55, 0.16) 0%,
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse 55% 40% at 88% 92%,
+            rgba(192, 57, 43, 0.1) 0%,
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse 50% 55% at 50% 50%,
+            rgba(212, 175, 55, 0.05) 0%,
+            transparent 75%
+          );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* Subtle grain texture */
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23g)' opacity='0.028'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.55;
+      }
+
+      /* ════════════════════════════════════════
+         APP SHELL
+      ════════════════════════════════════════ */
+      .app {
+        max-width: 480px;
+        margin: 0 auto;
+        padding: 0 18px 60px;
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
+      }
+
+      /* ════════════════════════════════════════
+         HEADER
+      ════════════════════════════════════════ */
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 22px 0 10px;
+        animation: fadeSlideDown 0.55s ease backwards;
+      }
+
+      .header-brand {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+      }
+
+      .brand-logo {
+        width: 52px;
+        height: 52px;
+        flex-shrink: 0;
+        background: linear-gradient(145deg, var(--accent), var(--accent-deep));
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 22px var(--accent-glow);
+        animation: logoIn 0.72s var(--t-bounce) backwards;
+      }
+      .brand-logo svg {
+        width: 26px;
+        height: 26px;
+        color: #fff;
+        stroke-width: 2;
+      }
+
+      .brand-text {
+        line-height: 1;
+      }
+      .brand-text h1 {
+        font-size: 1.22rem;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        color: var(--text-primary);
+        margin-bottom: 3px;
+      }
+      .brand-text p {
+        font-size: 0.68rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .icon-btn {
+        width: 46px;
+        height: 46px;
+        min-width: 46px;
+        border-radius: 14px;
+        border: 1px solid var(--surface-border);
+        background: var(--surface);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-primary);
+        box-shadow: var(--surface-shadow);
+        transition:
+          transform var(--t-fast),
+          background var(--t-fast),
+          box-shadow var(--t-fast);
+      }
+      .icon-btn:hover {
+        background: var(--surface-hover);
+        box-shadow: 0 8px 26px rgba(212, 175, 55, 0.2);
+      }
+      .icon-btn:active {
+        transform: scale(0.88);
+      }
+      .icon-btn svg {
+        width: 18px;
+        height: 18px;
+        stroke-width: 2;
+      }
+
+      /* ════════════════════════════════════════
+         HERO SECTION
+      ════════════════════════════════════════ */
+      .hero {
+        text-align: center;
+        padding: 30px 0 36px;
+        animation: fadeSlideUp 0.7s ease 0.07s backwards;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: var(--surface);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--surface-border);
+        border-radius: 100px;
+        padding: 6px 16px 6px 10px;
+        font-size: 0.73rem;
+        font-weight: 600;
+        color: var(--text-secondary);
+        margin-bottom: 20px;
+        letter-spacing: 0.02em;
+        box-shadow: var(--surface-shadow);
+      }
+      .hero-badge svg {
+        width: 13px;
+        height: 13px;
+        color: var(--accent);
+        stroke-width: 2.5;
+      }
+
+      .hero-title {
+        font-size: 2.15rem;
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        color: var(--text-primary);
+        line-height: 1.05;
+        margin-bottom: 10px;
+      }
+      .gradient-text {
+        background: linear-gradient(135deg, var(--accent) 0%, #e8523a 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero-sub {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+        letter-spacing: -0.01em;
+      }
+
+      /* ════════════════════════════════════════
+         SECTION HEADER
+      ════════════════════════════════════════ */
+      .section-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 14px;
+        animation: fadeSlideUp 0.7s ease 0.18s backwards;
+      }
+      .section-title {
+        font-size: 1rem;
+        font-weight: 800;
+        color: var(--text-primary);
+        letter-spacing: -0.02em;
+      }
+      .section-meta {
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: var(--text-muted);
+      }
+
+      /* ════════════════════════════════════════
+         CATEGORY CARDS GRID
+      ════════════════════════════════════════ */
+      .category-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      .cat-card {
+        background: var(--surface);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid var(--surface-border);
+        box-shadow: var(--surface-shadow);
+        border-radius: var(--r-lg);
+        padding: 20px 16px 48px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform var(--t-med),
+          background var(--t-fast),
+          box-shadow var(--t-med);
+        animation: cardIn 0.6s var(--t-bounce) backwards;
+        -webkit-user-select: none;
+        user-select: none;
+        outline: none;
+      }
+      .cat-card:focus-visible {
+        box-shadow:
+          0 0 0 3px var(--accent-glow),
+          var(--surface-shadow);
+      }
+
+      /* decorative glow orb */
+      .cat-card::after {
+        content: "";
+        position: absolute;
+        top: -26px;
+        right: -26px;
+        width: 84px;
+        height: 84px;
+        border-radius: 50%;
+        background: var(--cat-orb, rgba(212, 175, 55, 0.1));
+        transition: transform var(--t-med);
+        pointer-events: none;
+      }
+      .cat-card:hover {
+        transform: translateY(-4px) scale(1.025);
+        background: var(--surface-hover);
+        box-shadow: 0 22px 50px rgba(90, 50, 10, 0.18);
+      }
+      .cat-card:active {
+        transform: scale(0.96);
+        transition-duration: 0.1s;
+      }
+      [data-theme="dark"] .cat-card:hover {
+        box-shadow: 0 22px 50px rgba(0, 0, 0, 0.55);
+      }
+      .cat-card:hover::after {
+        transform: scale(1.9);
+      }
+
+      /* stagger + orb colors */
+      .cat-card:nth-child(1) {
+        animation-delay: 0.14s;
+        --cat-orb: rgba(102, 126, 234, 0.14);
+      }
+      .cat-card:nth-child(2) {
+        animation-delay: 0.22s;
+        --cat-orb: rgba(240, 147, 251, 0.14);
+      }
+      .cat-card:nth-child(3) {
+        animation-delay: 0.3s;
+        --cat-orb: rgba(79, 172, 254, 0.13);
+      }
+      .cat-card:nth-child(4) {
+        animation-delay: 0.38s;
+        --cat-orb: rgba(67, 233, 123, 0.13);
+      }
+
+      .cat-icon-box {
+        width: 50px;
+        height: 50px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 14px;
+        background: var(--cat-grad, linear-gradient(135deg, #667eea, #764ba2));
+        box-shadow: 0 6px 18px var(--cat-shadow, rgba(102, 126, 234, 0.38));
+        transition: transform var(--t-fast);
+      }
+      .cat-card:hover .cat-icon-box {
+        transform: scale(1.08) rotate(-3deg);
+      }
+      .cat-icon-box svg {
+        width: 22px;
+        height: 22px;
+        color: #fff;
+        stroke-width: 2;
+      }
+
+      .cat-card:nth-child(1) .cat-icon-box {
+        --cat-grad: linear-gradient(135deg, #667eea, #764ba2);
+        --cat-shadow: rgba(102, 126, 234, 0.38);
+      }
+      .cat-card:nth-child(2) .cat-icon-box {
+        --cat-grad: linear-gradient(135deg, #f093fb, #f5576c);
+        --cat-shadow: rgba(245, 87, 108, 0.38);
+      }
+      .cat-card:nth-child(3) .cat-icon-box {
+        --cat-grad: linear-gradient(135deg, #4facfe, #00f2fe);
+        --cat-shadow: rgba(79, 172, 254, 0.38);
+      }
+      .cat-card:nth-child(4) .cat-icon-box {
+        --cat-grad: linear-gradient(135deg, #43e97b, #38f9d7);
+        --cat-shadow: rgba(67, 233, 123, 0.38);
+      }
+
+      .cat-name {
+        font-size: 0.95rem;
+        font-weight: 800;
+        color: var(--text-primary);
+        letter-spacing: -0.02em;
+        margin-bottom: 3px;
+      }
+      .cat-desc {
+        font-size: 0.72rem;
+        color: var(--text-muted);
+        font-weight: 500;
+        line-height: 1.35;
+      }
+
+      .cat-arrow {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--accent-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent);
+        transition: all var(--t-fast);
+      }
+      .cat-card:hover .cat-arrow {
+        background: var(--accent);
+        color: #1a1208;
+        transform: translateX(2px);
+        box-shadow: 0 4px 14px var(--accent-glow);
+      }
+      .cat-arrow svg {
+        width: 14px;
+        height: 14px;
+        stroke-width: 2.5;
+      }
+
+      /* ════════════════════════════════════════
+         INFO CHIPS
+      ════════════════════════════════════════ */
+      .info-strip {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 0;
+        animation: fadeSlideUp 0.7s ease 0.44s backwards;
+        position: relative;
+      }
+      .info-chip {
+        text-align: center;
+        background: var(--surface);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--surface-border);
+        border-radius: var(--r-md);
+        padding: 14px 28px;
+        box-shadow: var(--surface-shadow);
+        cursor: pointer;
+        font-family: inherit;
+        transition:
+          transform var(--t-fast),
+          background var(--t-fast),
+          box-shadow var(--t-fast);
+      }
+      .info-chip:hover {
+        transform: translateY(-2px);
+        background: var(--surface-hover);
+        box-shadow: 0 8px 26px rgba(212,175,55,0.20);
+      }
+      .info-chip:active { transform: scale(0.94); }
+      .chip-icon {
+        display: flex;
+        justify-content: center;
+        color: var(--accent);
+        margin-bottom: 5px;
+      }
+      .chip-icon svg {
+        width: 17px;
+        height: 17px;
+        stroke-width: 2;
+      }
+      .chip-label {
+        font-size: 0.63rem;
+        font-weight: 700;
+        color: var(--text-secondary);
+      }
+      /* WiFi password popup */
+      .wifi-popup {
+        position: absolute;
+        bottom: calc(100% + 12px);
+        left: 50%;
+        transform: translateX(-50%) translateY(6px);
+        background: var(--surface-hover);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--surface-border);
+        border-radius: var(--r-md);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+        padding: 12px 16px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.22s ease, transform 0.22s ease;
+        z-index: 50;
+      }
+      .wifi-popup.visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(-50%) translateY(0);
+      }
+      /* arrow */
+      .wifi-popup::after {
+        content: '';
+        position: absolute;
+        top: 100%; left: 50%;
+        transform: translateX(-50%);
+        border: 7px solid transparent;
+        border-top-color: var(--surface-border);
+      }
+      .wifi-popup-inner {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .wifi-popup-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--text-primary);
+        font-size: 0.92rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+      .wifi-popup-row svg {
+        width: 15px; height: 15px;
+        color: var(--accent); stroke-width: 2;
+        flex-shrink: 0;
+      }
+      .wifi-copy-btn {
+        width: 32px; height: 32px;
+        border-radius: 9px;
+        border: 1px solid var(--surface-border);
+        background: var(--accent-light);
+        color: var(--accent);
+        cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        transition: background var(--t-fast), transform var(--t-fast);
+        flex-shrink: 0;
+      }
+      .wifi-copy-btn:hover  { background: var(--accent); color: #1a1208; }
+      .wifi-copy-btn:active { transform: scale(0.88); }
+      .wifi-copy-btn svg    { width: 14px; height: 14px; stroke-width: 2.2; }
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+      }
+
+      /* ════════════════════════════════════════
+         FOOTER
+      ════════════════════════════════════════ */
+      .footer {
+        text-align: center;
+        padding: 30px 0 8px;
+        animation: fadeSlideUp 0.7s ease 0.54s backwards;
+      }
+      .footer-line {
+        height: 1px;
+        background: var(--surface-border);
+        margin-bottom: 14px;
+      }
+      .footer p {
+        font-size: 0.73rem;
+        color: var(--text-muted);
+        font-weight: 500;
+      }
+
+      /* ════════════════════════════════════════
+         MENU OVERLAY / FULL-SCREEN PANEL
+      ════════════════════════════════════════ */
+      .menu-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 400;
+        background: var(--overlay-bg);
+        display: flex;
+        flex-direction: column;
+        transform: translateY(100%);
+        transition: transform var(--t-slide);
+        will-change: transform;
+        overflow: hidden;
+      }
+      .menu-overlay.open {
+        transform: translateY(0);
+      }
+
+      /* ── Overlay header ── */
+      .ov-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 18px 12px;
+        background: var(--overlay-header-bg);
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
+        border-bottom: 1px solid var(--surface-border);
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        flex-shrink: 0;
+        transition: background var(--t-med);
+      }
+      @supports (padding-top: env(safe-area-inset-top)) {
+        .ov-header {
+          padding-top: calc(16px + env(safe-area-inset-top));
+        }
+      }
+
+      .ov-back {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        border-radius: 13px;
+        border: 1px solid var(--surface-border);
+        background: var(--surface);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-primary);
+        flex-shrink: 0;
+        transition:
+          transform var(--t-fast),
+          background var(--t-fast);
+      }
+      .ov-back:hover {
+        background: var(--surface-hover);
+      }
+      .ov-back:active {
+        transform: scale(0.88);
+      }
+      .ov-back svg {
+        width: 18px;
+        height: 18px;
+        stroke-width: 2.2;
+      }
+
+      .ov-title-block {
+        flex: 1;
+        min-width: 0;
+      }
+      .ov-title {
+        font-size: 1.08rem;
+        font-weight: 800;
+        letter-spacing: -0.025em;
+        color: var(--text-primary);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .ov-sub {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        font-weight: 500;
+        margin-top: 2px;
+      }
+
+      .ov-badge {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        border-radius: 13px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .ov-badge svg {
+        width: 20px;
+        height: 20px;
+        color: #fff;
+        stroke-width: 2;
+      }
+
+      /* ── Scrollable body ── */
+      .ov-body {
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+      }
+      .ov-body::-webkit-scrollbar {
+        width: 3px;
+      }
+      .ov-body::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .ov-body::-webkit-scrollbar-thumb {
+        background: var(--surface-border);
+        border-radius: 4px;
+      }
+
+      /* ── Tabs sticky bar ── */
+      .tabs-sticky {
+        position: sticky;
+        top: 0;
+        z-index: 15;
+        background: var(--overlay-header-bg);
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
+        border-bottom: 1px solid var(--surface-border);
+        transition: background var(--t-med);
+      }
+      .tabs-row {
+        display: flex;
+        gap: 8px;
+        padding: 12px 18px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .tabs-row::-webkit-scrollbar {
+        display: none;
+      }
+
+      .tab-btn {
+        height: 38px;
+        padding: 0 16px;
+        flex-shrink: 0;
+        border-radius: 100px;
+        border: 1px solid var(--surface-border);
+        background: var(--tab-inactive-bg);
+        backdrop-filter: blur(8px);
+        font-size: 0.8rem;
+        font-weight: 700;
+        font-family: inherit;
+        color: var(--text-secondary);
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all var(--t-fast);
+      }
+      .tab-btn.active {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #1a1208;
+        box-shadow: 0 4px 16px var(--accent-glow);
+      }
+      .tab-btn:hover:not(.active) {
+        border-color: var(--accent);
+        color: var(--text-primary);
+        background: var(--surface-hover);
+      }
+
+      /* ── Tab content pane ── */
+      .tab-pane {
+        padding: 20px 18px 40px;
+        animation: fadeSlideUp 0.28s ease backwards;
+      }
+
+      /* ── Subsection ── */
+      .subsection {
+        margin-bottom: 26px;
+      }
+      .subsection:last-child {
+        margin-bottom: 0;
+      }
+
+      .subsec-label {
+        font-size: 0.7rem;
+        font-weight: 800;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.11em;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .subsec-label::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--subsection-line);
+      }
+
+      /* ── Menu item card ── */
+      .menu-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 13px 15px;
+        background: var(--item-card);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid var(--item-border);
+        border-radius: var(--r-md);
+        margin-bottom: 7px;
+        gap: 12px;
+        transition:
+          transform var(--t-fast),
+          background var(--t-fast),
+          box-shadow var(--t-fast);
+      }
+      .menu-item:last-child {
+        margin-bottom: 0;
+      }
+      .menu-item:hover {
+        background: var(--surface-hover);
+        box-shadow: 0 4px 18px rgba(90, 50, 10, 0.09);
+      }
+      .menu-item:active {
+        transform: scale(0.977);
+        transition-duration: 0.1s;
+      }
+      [data-theme="dark"] .menu-item:hover {
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.32);
+      }
+
+      .item-info {
+        flex: 1;
+        min-width: 0;
+      }
+      .item-name {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        line-height: 1.3;
+        margin-bottom: 3px;
+      }
+      .item-desc {
+        font-size: 0.74rem;
+        color: var(--text-muted);
+        line-height: 1.4;
+      }
+      .item-price {
+        font-size: 0.95rem;
+        font-weight: 800;
+        color: var(--price-color);
+        white-space: nowrap;
+        flex-shrink: 0;
+        letter-spacing: -0.02em;
+      }
+
+      /* ── Breakfast cards ── */
+      .breakfast-grid {
+        display: grid;
+        gap: 14px;
+        padding: 18px 18px 40px;
+      }
+
+      .bk-card {
+        background: var(--item-card);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--item-border);
+        border-radius: var(--r-lg);
+        padding: 20px;
+        position: relative;
+        overflow: hidden;
+        animation: cardIn 0.55s var(--t-bounce) backwards;
+        transition:
+          transform var(--t-fast),
+          box-shadow var(--t-fast);
+      }
+      .bk-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 36px rgba(90, 50, 10, 0.12);
+      }
+      [data-theme="dark"] .bk-card:hover {
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.38);
+      }
+
+      /* top colour stripe */
+      .bk-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(
+          --bk-stripe,
+          linear-gradient(90deg, var(--accent), #e8523a)
+        );
+      }
+      .bk-card:nth-child(1) {
+        animation-delay: 0.04s;
+        --bk-stripe: linear-gradient(90deg, #667eea, #764ba2);
+      }
+      .bk-card:nth-child(2) {
+        animation-delay: 0.11s;
+        --bk-stripe: linear-gradient(90deg, #f093fb, #f5576c);
+      }
+      .bk-card:nth-child(3) {
+        animation-delay: 0.18s;
+        --bk-stripe: linear-gradient(90deg, #4facfe, #00f2fe);
+      }
+      .bk-card:nth-child(4) {
+        animation-delay: 0.25s;
+        --bk-stripe: linear-gradient(90deg, #43e97b, #38f9d7);
+      }
+
+      .bk-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: 14px;
+        gap: 10px;
+      }
+      .bk-name {
+        font-size: 1.12rem;
+        font-weight: 900;
+        color: var(--text-primary);
+        letter-spacing: -0.025em;
+      }
+      .bk-price {
+        background: var(--accent);
+        color: #1a1208;
+        font-size: 0.9rem;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        padding: 4px 13px;
+        border-radius: 100px;
+        white-space: nowrap;
+        flex-shrink: 0;
+        box-shadow: 0 3px 10px var(--accent-glow);
+      }
+      .bk-includes {
+        font-size: 0.68rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        color: var(--text-muted);
+        margin-bottom: 9px;
+      }
+      .bk-items {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+      .bk-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.83rem;
+        font-weight: 500;
+        color: var(--text-secondary);
+      }
+      .bk-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex-shrink: 0;
+      }
+
+      /* ── Skeleton shimmer ── */
+      .skeleton-wrap {
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .skeleton {
+        border-radius: var(--r-md);
+        height: 62px;
+        background: linear-gradient(
+          90deg,
+          var(--shimmer-a) 0%,
+          var(--shimmer-b) 50%,
+          var(--shimmer-a) 100%
+        );
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite;
+      }
+      .skeleton.xs {
+        height: 36px;
+        width: 55%;
+      }
+      .skeleton.tall {
+        height: 82px;
+      }
+
+      /* ════════════════════════════════════════
+         KEYFRAMES
+      ════════════════════════════════════════ */
+      @keyframes logoIn {
+        from {
+          opacity: 0;
+          transform: scale(0.38) rotate(-14deg);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) rotate(0deg);
+        }
+      }
+      @keyframes fadeSlideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeSlideUp {
+        from {
+          opacity: 0;
+          transform: translateY(22px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes cardIn {
+        from {
+          opacity: 0;
+          transform: translateY(28px) scale(0.93);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
+      }
+
+      /* ════════════════════════════════════════
+         RESPONSIVE BREAKPOINTS
+      ════════════════════════════════════════ */
+      @media (min-width: 390px) {
+        .hero-title {
+          font-size: 2.35rem;
+        }
+      }
+      @media (min-width: 520px) {
+        .app {
+          padding: 0 24px 64px;
+        }
+      }
+      @media (min-width: 768px) {
+        .app {
+          max-width: 560px;
+          padding: 0 34px 80px;
+        }
+        .category-grid {
+          gap: 16px;
+        }
+        .cat-card {
+          padding: 24px 20px 52px;
+        }
+        .hero-title {
+          font-size: 2.7rem;
+        }
+      }
+      @media (min-width: 1280px) {
+        .app {
+          max-width: 520px;
+        }
+      }
+
+      /* ════════════════════════════════════════
+         GLOBAL THEME TRANSITIONS
+      ════════════════════════════════════════ */
+      body,
+      .menu-overlay,
+      .ov-header,
+      .tabs-sticky {
+        transition:
+          background-color var(--t-med),
+          color var(--t-med),
+          border-color var(--t-med);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ╔═══════════════════════════════╗
+         ║       MAIN HOME PAGE          ║
+         ╚═══════════════════════════════╝ -->
+    <div class="app">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-brand">
+          <div class="brand-logo">
+            <i data-lucide="coffee"></i>
+          </div>
+          <div class="brand-text">
+            <h1>3M Louange</h1>
+            <p>Café · Restaurant</p>
+          </div>
+        </div>
+        <button class="icon-btn" id="themeToggle" aria-label="Changer le thème">
+          <i data-lucide="sun" id="iconSun"></i>
+          <i data-lucide="moon" id="iconMoon" style="display: none"></i>
+        </button>
+      </header>
+
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-badge">
+          <i data-lucide="sparkles"></i>
+          Menu Digital 2026
+        </div>
+        <h2 class="hero-title">
+          Notre <span class="gradient-text">Carte</span>
+        </h2>
+        <p class="hero-sub">Savourez nos plats, boissons &amp; douceurs</p>
+      </section>
+
+      <!-- Section Label -->
+      <div class="section-header">
+        <span class="section-title">Catégories</span>
+        <span class="section-meta">4 sections</span>
+      </div>
+
+      <!-- Category Cards -->
+      <div class="category-grid">
+        <div
+          class="cat-card"
+          data-cat="restaurant"
+          role="button"
+          tabindex="0"
+          aria-label="Restaurant"
+        >
+          <div class="cat-icon-box"><i data-lucide="utensils"></i></div>
+          <div class="cat-name">Restaurant</div>
+          <div class="cat-desc">Pizzas, Sandwichs, Plats…</div>
+          <div class="cat-arrow"><i data-lucide="chevron-right"></i></div>
+        </div>
+
+        <div
+          class="cat-card"
+          data-cat="boissons"
+          role="button"
+          tabindex="0"
+          aria-label="Boissons"
+        >
+          <div class="cat-icon-box"><i data-lucide="cup-soda"></i></div>
+          <div class="cat-name">Boissons</div>
+          <div class="cat-desc">Cafés, Jus, Cocktails…</div>
+          <div class="cat-arrow"><i data-lucide="chevron-right"></i></div>
+        </div>
+
+        <div
+          class="cat-card"
+          data-cat="sucre"
+          role="button"
+          tabindex="0"
+          aria-label="Sucreries"
+        >
+          <div class="cat-icon-box"><i data-lucide="cake-slice"></i></div>
+          <div class="cat-name">Sucreries</div>
+          <div class="cat-desc">Crêpes, Gaufres, Pâtisseries…</div>
+          <div class="cat-arrow"><i data-lucide="chevron-right"></i></div>
+        </div>
+
+        <div
+          class="cat-card"
+          data-cat="dejeuner"
+          role="button"
+          tabindex="0"
+          aria-label="Petit Déjeuner"
+        >
+          <div class="cat-icon-box"><i data-lucide="sunrise"></i></div>
+          <div class="cat-name">Petit Déj.</div>
+          <div class="cat-desc">Formules du matin</div>
+          <div class="cat-arrow"><i data-lucide="chevron-right"></i></div>
+        </div>
+      </div>
+
+      <!-- WiFi Chip + Password Popup -->
+      <div class="info-strip">
+        <button
+          class="info-chip wifi-chip"
+          id="wifiChip"
+          aria-label="Voir le mot de passe WiFi"
+        >
+          <div class="chip-icon"><i data-lucide="wifi"></i></div>
+          <div class="chip-label">WiFi gratuit</div>
+        </button>
+
+        <div
+          class="wifi-popup"
+          id="wifiPopup"
+          role="tooltip"
+          aria-live="polite"
+        >
+          <div class="wifi-popup-inner">
+            <div class="wifi-popup-row">
+              <i data-lucide="lock"></i>
+              <span id="wifiPwd">3m louange123</span>
+            </div>
+            <button
+              class="wifi-copy-btn"
+              id="wifiCopyBtn"
+              aria-label="Copier le mot de passe"
+            >
+              <i data-lucide="copy" id="copyIcon"></i>
+              <i data-lucide="check" id="checkIcon" style="display: none"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-line"></div>
+        <p>3M Louange &copy; 2026 · Tous droits réservés</p>
+      </footer>
+    </div>
+    <!-- /app -->
+
+    <!-- ╔═══════════════════════════════╗
+         ║     FULL-SCREEN MENU PANEL    ║
+         ╚═══════════════════════════════╝ -->
+    <div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true">
+      <div class="ov-header">
+        <button class="ov-back" id="ovBack" aria-label="Retour">
+          <i data-lucide="arrow-left"></i>
+        </button>
+        <div class="ov-title-block">
+          <div class="ov-title" id="ovTitle"></div>
+          <div class="ov-sub" id="ovSub"></div>
+        </div>
+        <div class="ov-badge" id="ovBadge">
+          <i id="ovBadgeIcon"></i>
+        </div>
+      </div>
+
+      <div class="ov-body" id="ovBody"></div>
+    </div>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <script>
+      /* ────────────────────────────────────────
+         MENU DATA
+      ──────────────────────────────────────── */
+      const DATA = {
+        restaurant: {
+          title: "Restaurant",
+          sub: "Sandwichs · Pizzas · Pasta · Plats",
+          icon: "utensils",
+          badge: "linear-gradient(135deg,#667eea,#764ba2)",
+          badgeShadow: "rgba(102,126,234,0.42)",
+          tabs: {
+            Sandwiches: {
+              Makloub: [
+                { n: "Thon", p: 8 },
+                { n: "Jambon", p: 8 },
+                { n: "Escalope grillé", p: 8.5 },
+                { n: "Escalope panné", p: 9.5 },
+                { n: "Cordon bleu", p: 9.5 },
+                { n: "Hamburger", p: 11.5 },
+              ],
+              "Baguette Farcie": [
+                { n: "Jambon", p: 11 },
+                { n: "Escalope grillé", p: 12.5 },
+                { n: "Escalope panné", p: 13 },
+                { n: "Cordon bleu", p: 13.5 },
+              ],
+              Tacos: [
+                { n: "Thon", p: 9 },
+                { n: "Jambon", p: 9 },
+                { n: "Escalope grillé", p: 10 },
+                { n: "Escalope panné", p: 11 },
+                { n: "Cordon bleu", p: 11.5 },
+              ],
+              Cornet: [
+                { n: "Thon", p: 11 },
+                { n: "Jambon", p: 10 },
+                { n: "Escalope grillé", p: 12.5 },
+                { n: "Escalope panné", p: 13 },
+                { n: "Cordon bleu", p: 13.5 },
+              ],
+              Supplément: [{ n: "Frites", p: 3.5 }],
+            },
+            Pizzas: {
+              Pizzas: [
+                { n: "Margueritta", p: 14, d: "sauce tomate + mozzarella" },
+                { n: "Neptune", p: 15, d: "sauce tomate + mozzarella + thon" },
+                {
+                  n: "Pepperoni",
+                  p: 16,
+                  d: "sauce tomate + mozzarella + pepperoni",
+                },
+                {
+                  n: "Bianca",
+                  p: 18,
+                  d: "sauce blanche + mozzarella + jambon",
+                },
+                {
+                  n: "4 Fromages",
+                  p: 18,
+                  d: "sauce blanche + mozzarella + gruyère + cheddar + roquefort",
+                },
+                {
+                  n: "Végétarienne",
+                  p: 16,
+                  d: "sauce tomate + légumes sautés + mozzarella + champignon",
+                },
+                {
+                  n: "4 Saisons",
+                  p: 20,
+                  d: "sauce tomate + légumes sautés + mozzarella + pepperoni + escalope + jambon",
+                },
+                {
+                  n: "Mexicano",
+                  p: 22,
+                  d: "sauce tomate + viande hachée + mozzarella",
+                },
+                {
+                  n: "Chicken",
+                  p: 18,
+                  d: "sauce tomate + mozzarella + escalope + champignons",
+                },
+                {
+                  n: "Fruits de mer",
+                  p: 23,
+                  d: "sauce tomate + mozzarella + fruits de mer",
+                },
+                {
+                  n: "Boumba 3M 🔥",
+                  p: 32,
+                  d: "double pâtes + sauce tomate + double mozzarella + pepperoni + escalope + jambon + viande hachée",
+                },
+              ],
+            },
+            "Pasta & Lasagne": {
+              Pasta: [
+                { n: "Putanesca", p: 16 },
+                { n: "Carbonara", p: 17 },
+                { n: "Bolonaise", p: 18 },
+                { n: "4 Fromage", p: 19 },
+                { n: "Fruits de mer", p: 25 },
+              ],
+              Lasagne: [
+                { n: "Lasagne bolognaise", p: 19 },
+                { n: "Lasagne fruits de mer", p: 23 },
+              ],
+            },
+            Salades: {
+              Salades: [
+                { n: "Salade Tunisienne", p: 10 },
+                { n: "Salade Mechouia", p: 10 },
+                { n: "Salade César", p: 17 },
+                { n: "Salade Niçoise", p: 17 },
+              ],
+            },
+            Plats: {
+              Plats: [
+                { n: "Plat escalope grillé", p: 17 },
+                { n: "Plat escalope panné", p: 18 },
+                { n: "Plat escalope à la crème", p: 21 },
+                { n: "Plat cordon bleu", p: 18 },
+                { n: "Plat dourade", p: 20 },
+                { n: "Plat loup", p: 22 },
+                { n: "Plat fruits de mer", p: 27 },
+              ],
+            },
+            "Ojja & Omelette": {
+              Ojja: [
+                { n: "Ojja vierge", p: 8 },
+                { n: "Ojja escalope", p: 10 },
+                { n: "Ojja thon", p: 10 },
+                { n: "Ojja merguez", p: 12 },
+                { n: "Ojja champignons", p: 12 },
+                { n: "Ojja cocktail fruits de mer", p: 17 },
+              ],
+              Omelette: [
+                { n: "Omelette fromage", p: 6 },
+                { n: "Omelette fromage légumes", p: 7 },
+                { n: "Omelette fromage thon", p: 8 },
+                { n: "Omelette fromage jambon", p: 7 },
+                { n: "Omelette fromage thon jambon", p: 10 },
+                { n: "Omelette fromage poulet champignons", p: 13 },
+              ],
+            },
+          },
+        },
+
+        boissons: {
+          title: "Boissons",
+          sub: "Cafés · Jus · Smoothies · Cocktails",
+          icon: "cup-soda",
+          badge: "linear-gradient(135deg,#f093fb,#f5576c)",
+          badgeShadow: "rgba(245,87,108,0.42)",
+          tabs: {
+            "Café & Thé": {
+              Café: [
+                { n: "Express", p: 3 },
+                { n: "Capucin", p: 3.5 },
+                { n: "Américain", p: 3.5 },
+                { n: "Cappuccino", p: 5 },
+                { n: "Directe", p: 4 },
+                { n: "Café liégeois", p: 6.5 },
+                { n: "Café glacé", p: 6 },
+                { n: "Café turc", p: 5 },
+                { n: "Chocolat au lait", p: 4 },
+                { n: "Nescafé", p: 4 },
+              ],
+              Thé: [
+                { n: "Thé vert à la menthe", p: 3 },
+                { n: "Thé amande", p: 6 },
+                { n: "Thé pignon", p: 10 },
+                { n: "Thé baklawa", p: 9 },
+                { n: "Thé infusion", p: 4.5 },
+                { n: "Ice tea", p: 6.5 },
+              ],
+            },
+            Jus: {
+              Jus: [
+                { n: "Citronnade", p: 5 },
+                { n: "Citronnade amande", p: 8 },
+                { n: "Jus Orange", p: 4.5 },
+                { n: "Jus Fraise", p: 6 },
+                { n: "Jus Kiwi", p: 7 },
+                { n: "Lait de poule", p: 7 },
+                { n: "Jus Pêche", p: 7.5 },
+                { n: "Jus Framboise", p: 8 },
+                { n: "Jus Pistache", p: 9 },
+                { n: "Jus Ananas", p: 8 },
+              ],
+            },
+            Smoothies: {
+              Smoothies: [
+                { n: "Fraise", p: 8 },
+                { n: "Banane", p: 8 },
+                { n: "Pomme", p: 8 },
+                { n: "Kiwi", p: 9 },
+                { n: "Green Power (banane pomme kiwi)", p: 12 },
+                { n: "Hawaï (kiwi fraise banane)", p: 12 },
+                { n: "Pinacolada", p: 12 },
+              ],
+            },
+            Milkshake: {
+              Milkshake: [
+                { n: "Classique", p: 8 },
+                { n: "Oreo", p: 9 },
+                { n: "Spéculos", p: 9 },
+                { n: "Nutella", p: 9 },
+                { n: "Nutella banane", p: 11 },
+                { n: "3M 🔥", p: 16 },
+              ],
+              Frappuccino: [
+                { n: "Nestlé", p: 7 },
+                { n: "Vanille", p: 7 },
+                { n: "Noisette", p: 7 },
+                { n: "Caramel", p: 7 },
+                { n: "Nutella", p: 9 },
+                { n: "Oreo", p: 9 },
+              ],
+              "Supplément Frapp.": [
+                { n: "Arôme", p: 3 },
+                { n: "Nestlé", p: 3 },
+                { n: "Fruits secs", p: 5 },
+              ],
+            },
+            Mojitos: {
+              Mojitos: [
+                { n: "Virgin", p: 6 },
+                { n: "Fragola", p: 6.5 },
+                { n: "Blue", p: 7 },
+                { n: "Red", p: 7 },
+                { n: "Fruit de passion", p: 7 },
+                { n: "Énergétique", p: 10 },
+              ],
+            },
+            Cocktails: {
+              Cocktails: [
+                { n: "Queen (fraise banane)", p: 9 },
+                { n: "The King (banane, fruits secs, miel et datte)", p: 12 },
+                { n: "Banakiwi (kiwi banane)", p: 10 },
+                { n: "Cocktail 3M Overdose 🔥", p: 16 },
+              ],
+            },
+            "Glace & Jwejem": {
+              Glace: [
+                { n: "2 boules", p: 5.5 },
+                { n: "3 boules", p: 8 },
+                { n: "Glace spéciale 3M", p: 15 },
+              ],
+              Jwejem: [
+                { n: "Jwajem moyenne", p: 8 },
+                { n: "Jwajem maxi", p: 12 },
+                { n: "Jwajem 3M Over Dose 🔥", p: 16 },
+              ],
+            },
+            Autres: {
+              Boissons: [
+                { n: "Eau 0.5L", p: 1.5 },
+                { n: "Eau 1L", p: 3 },
+                { n: "Eau gazeuse", p: 4 },
+                { n: "Canette", p: 3.5 },
+                { n: "Shark / Red Bull", p: 7 },
+              ],
+              Chicha: [
+                { n: "Chicha Fakher", p: 6 },
+                { n: "Chicha Adalia", p: 7 },
+                { n: "Chicha Jirak", p: 5 },
+              ],
+            },
+          },
+        },
+
+        sucre: {
+          title: "Sucreries",
+          sub: "Crêpes · Gaufres · Viennoiseries",
+          icon: "cake-slice",
+          badge: "linear-gradient(135deg,#4facfe,#00f2fe)",
+          badgeShadow: "rgba(79,172,254,0.42)",
+          tabs: {
+            "Crêpes Salées": {
+              "Crêpes Salées": [
+                { n: "Thon fromage", p: 8 },
+                { n: "Jambon fromage", p: 8 },
+                { n: "Spéciale", p: 10 },
+                { n: "Quatre fromage", p: 12 },
+                { n: "Poulet champignons", p: 14 },
+              ],
+            },
+            "Crêpes Sucrées": {
+              "Crêpes Sucrées": [
+                { n: "Chocolat", p: 8 },
+                { n: "Chocolat banane", p: 11 },
+                { n: "Chocolat amande", p: 12 },
+                { n: "Nutella", p: 10 },
+                { n: "Nutella banane", p: 13 },
+                { n: "Nutella amande", p: 14 },
+                {
+                  n: "Overdose 🔥",
+                  p: 18,
+                  d: "chocolat, spéculos, fruits sec, toppings, chantilly, fruit",
+                },
+              ],
+            },
+            Gaufres: {
+              Gaufres: [
+                { n: "Chocolat", p: 8 },
+                { n: "Chocolat banane", p: 11 },
+                { n: "Chocolat amande", p: 12 },
+                { n: "Nutella", p: 10 },
+                { n: "Nutella banane", p: 13 },
+                { n: "Nutella amande", p: 14 },
+                {
+                  n: "Overdose 🔥",
+                  p: 18,
+                  d: "chocolat, spéculos, fruits sec, toppings, chantilly, fruit",
+                },
+              ],
+            },
+            Viennoiserie: {
+              Viennoiserie: [
+                { n: "Croissant", p: 2.5 },
+                { n: "Tarte", p: 4 },
+                { n: "Gâteau", p: 5.5 },
+                { n: "Tiramisu", p: 6.5 },
+                { n: "Cheesecake", p: 7 },
+              ],
+            },
+          },
+        },
+
+        dejeuner: {
+          title: "Petit Déjeuner",
+          sub: "Formules & combos du matin",
+          icon: "sunrise",
+          badge: "linear-gradient(135deg,#43e97b,#38f9d7)",
+          badgeShadow: "rgba(67,233,123,0.42)",
+          isBreakfast: true,
+          items: [
+            {
+              n: "Solo",
+              p: 12,
+              inc: [
+                "Café au choix",
+                "Croissant",
+                "Eau 0.5L",
+                "Small jus",
+                "Bsissa",
+                "Toast (confiture, beurre, chocolat)",
+              ],
+            },
+            {
+              n: "Tout Doux",
+              p: 18,
+              inc: [
+                "Café au choix",
+                "Croissant",
+                "Eau 0.5L",
+                "Jus frais",
+                "Toast (beurre, chocolat, confiture)",
+                "Yaourt",
+                "Salade de fruits",
+                "Pain cake",
+                "Bsissa",
+                "Plat charcuterie et fromage",
+                "Omelette",
+              ],
+            },
+            {
+              n: "Duo Doux",
+              p: 32,
+              inc: [
+                "2 Cafés au choix",
+                "2 Croissants",
+                "Eau 1L",
+                "2 Jus frais",
+                "Toast (beurre, chocolat, confiture)",
+                "2 Yaourts",
+                "2 Salades de fruits",
+                "2 Pain cakes",
+                "2 Bsissa",
+                "2 Plats charcuteries et fromage",
+                "2 Omelettes",
+              ],
+            },
+            {
+              n: "Kidy 👧",
+              p: 10,
+              inc: [
+                "Chocolat au lait ou céréale",
+                "Croissant",
+                "Small jus",
+                "Mini crêpes",
+                "Eau 0.5L",
+              ],
+            },
+          ],
+        },
+      };
+
+      /* ────────────────────────────────────────
+         THEME TOGGLE
+      ──────────────────────────────────────── */
+      const html = document.documentElement;
+      const btnTh = document.getElementById("themeToggle");
+      const iSun = document.getElementById("iconSun");
+      const iMoon = document.getElementById("iconMoon");
+
+      function setTheme(dark) {
+        html.setAttribute("data-theme", dark ? "dark" : "light");
+        iSun.style.display = dark ? "none" : "";
+        iMoon.style.display = dark ? "" : "none";
+        localStorage.setItem("3m-theme", dark ? "dark" : "light");
+      }
+
+      // Initial theme
+      const saved = localStorage.getItem("3m-theme");
+      const sysDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setTheme(saved === "dark" || (!saved && sysDark));
+
+      btnTh.addEventListener("click", () =>
+        setTheme(html.getAttribute("data-theme") !== "dark"),
+      );
+
+      /* ────────────────────────────────────────
+         OVERLAY OPEN / CLOSE
+      ──────────────────────────────────────── */
+      const overlay = document.getElementById("menuOverlay");
+      const ovTitle = document.getElementById("ovTitle");
+      const ovSub = document.getElementById("ovSub");
+      const ovBadge = document.getElementById("ovBadge");
+      const ovBIcon = document.getElementById("ovBadgeIcon");
+      const ovBody = document.getElementById("ovBody");
+      const ovBack = document.getElementById("ovBack");
+
+      function openOverlay(catKey) {
+        const cat = DATA[catKey];
+        ovTitle.textContent = cat.title;
+        ovSub.textContent = cat.sub;
+        ovBadge.style.background = cat.badge;
+        ovBadge.style.boxShadow = `0 4px 16px ${cat.badgeShadow}`;
+        ovBIcon.setAttribute("data-lucide", cat.icon);
+        lucide.createIcons({ nodes: [ovBIcon] });
+
+        showSkeleton();
+        overlay.classList.add("open");
+        document.body.style.overflow = "hidden";
+        ovBody.scrollTop = 0;
+
+        setTimeout(() => {
+          cat.isBreakfast ? renderBreakfast(cat.items) : renderTabbed(cat.tabs);
+        }, 310);
+      }
+
+      function closeOverlay() {
+        overlay.classList.remove("open");
+        document.body.style.overflow = "";
+        setTimeout(() => {
+          ovBody.innerHTML = "";
+        }, 480);
+      }
+
+      ovBack.addEventListener("click", closeOverlay);
+
+      // Swipe-down to close (touch)
+      let touchY0 = 0;
+      overlay.addEventListener(
+        "touchstart",
+        (e) => {
+          touchY0 = e.touches[0].clientY;
+        },
+        { passive: true },
+      );
+      overlay.addEventListener(
+        "touchend",
+        (e) => {
+          if (
+            e.changedTouches[0].clientY - touchY0 > 85 &&
+            ovBody.scrollTop === 0
+          )
+            closeOverlay();
+        },
+        { passive: true },
+      );
+
+      // Category card clicks & keyboard
+      document.querySelectorAll(".cat-card").forEach((card) => {
+        const go = () => openOverlay(card.dataset.cat);
+        card.addEventListener("click", go);
+        card.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            go();
+          }
+        });
+      });
+
+      /* ────────────────────────────────────────
+         SKELETON SHIMMER
+      ──────────────────────────────────────── */
+      function showSkeleton() {
+        ovBody.innerHTML = `
+          <div class="skeleton-wrap">
+            <div class="skeleton xs"></div>
+            <div class="skeleton"></div>
+            <div class="skeleton"></div>
+            <div class="skeleton tall"></div>
+            <div class="skeleton xs"></div>
+            <div class="skeleton"></div>
+            <div class="skeleton"></div>
+            <div class="skeleton tall"></div>
+          </div>`;
+      }
+
+      /* ────────────────────────────────────────
+         TABBED MENU RENDERER
+      ──────────────────────────────────────── */
+      function renderTabbed(tabs) {
+        const keys = Object.keys(tabs);
+        const firstTab = keys[0];
+
+        const tabsHtml = keys
+          .map(
+            (k) => `
+          <button class="tab-btn${k === firstTab ? " active" : ""}" data-tab="${esc(k)}">${esc(k)}</button>
+        `,
+          )
+          .join("");
+
+        ovBody.innerHTML = `
+          <div class="tabs-sticky">
+            <div class="tabs-row" id="tabsRow">${tabsHtml}</div>
+          </div>
+          <div id="tabPane"></div>`;
+
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            document
+              .querySelectorAll(".tab-btn")
+              .forEach((b) => b.classList.remove("active"));
+            this.classList.add("active");
+            renderTabPane(tabs[this.dataset.tab]);
+            this.scrollIntoView({
+              block: "nearest",
+              inline: "center",
+              behavior: "smooth",
+            });
+          });
+        });
+
+        renderTabPane(tabs[firstTab]);
+      }
+
+      function renderTabPane(sectionMap) {
+        let html = '<div class="tab-pane">';
+        for (const [title, items] of Object.entries(sectionMap)) {
+          html += `<div class="subsection"><div class="subsec-label">${esc(title)}</div>`;
+          items.forEach((item) => {
+            html += `<div class="menu-item">
+              <div class="item-info">
+                <div class="item-name">${esc(item.n)}</div>
+                ${item.d ? `<div class="item-desc">${esc(item.d)}</div>` : ""}
+              </div>
+              <div class="item-price">${price(item.p)}</div>
+            </div>`;
+          });
+          html += "</div>";
+        }
+        html += "</div>";
+        document.getElementById("tabPane").innerHTML = html;
+      }
+
+      /* ────────────────────────────────────────
+         BREAKFAST RENDERER
+      ──────────────────────────────────────── */
+      function renderBreakfast(items) {
+        let html = '<div class="breakfast-grid">';
+        items.forEach((item) => {
+          const rows = item.inc
+            .map(
+              (i) => `
+            <div class="bk-item"><div class="bk-dot"></div><span>${esc(i)}</span></div>`,
+            )
+            .join("");
+          html += `<div class="bk-card">
+            <div class="bk-head">
+              <div class="bk-name">${esc(item.n)}</div>
+              <div class="bk-price">${price(item.p)}</div>
+            </div>
+            <div class="bk-includes">Inclus</div>
+            <div class="bk-items">${rows}</div>
+          </div>`;
+        });
+        html += "</div>";
+        ovBody.innerHTML = html;
+      }
+
+      /* ────────────────────────────────────────
+         UTILITIES
+      ──────────────────────────────────────── */
+      const price = (p) =>
+        Number.isInteger(p) ? `${p} DT` : `${p.toFixed(1)} DT`;
+      const esc = (s) =>
+        String(s)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+
+      /* ────────────────────────────────────────
+         WIFI PASSWORD POPUP
+      ──────────────────────────────────────── */
+      const wifiChip = document.getElementById("wifiChip");
+      const wifiPopup = document.getElementById("wifiPopup");
+      const wifiCopyBtn = document.getElementById("wifiCopyBtn");
+      const copyIcon = document.getElementById("copyIcon");
+      const checkIcon = document.getElementById("checkIcon");
+      const wifiPwd = document.getElementById("wifiPwd");
+
+      wifiChip.addEventListener("click", (e) => {
+        e.stopPropagation();
+        wifiPopup.classList.toggle("visible");
+      });
+
+      // Close when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!wifiChip.contains(e.target) && !wifiPopup.contains(e.target)) {
+          wifiPopup.classList.remove("visible");
+        }
+      });
+
+      // Copy to clipboard
+      wifiCopyBtn.addEventListener("click", async (e) => {
+        e.stopPropagation();
+        try {
+          await navigator.clipboard.writeText(wifiPwd.textContent.trim());
+        } catch (_) {
+          // fallback for older browsers
+          const ta = document.createElement("textarea");
+          ta.value = wifiPwd.textContent.trim();
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+        }
+        copyIcon.style.display = "none";
+        checkIcon.style.display = "";
+        lucide.createIcons({ nodes: [checkIcon] });
+        setTimeout(() => {
+          checkIcon.style.display = "none";
+          copyIcon.style.display = "";
+          lucide.createIcons({ nodes: [copyIcon] });
+        }, 1800);
+      });
+
+      /* ────────────────────────────────────────
+         INIT LUCIDE ICONS
+      ──────────────────────────────────────── */
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
